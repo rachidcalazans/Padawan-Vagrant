@@ -1,3 +1,4 @@
+require './provisioning/roles/default_role.rb'
 require './provisioning/roles/git_role.rb'
 require './provisioning/roles/mongo_role.rb'
 require './provisioning/roles/node_role.rb'
@@ -23,6 +24,8 @@ class Main
 
   private
   def run
+    DefaultRole.run @machine
+
     @roles_map.each do |key, value|
       if value
         clazz_name = "#{key.to_s.capitalize}Role"
